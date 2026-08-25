@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎥 Connectify – Seamless Video Calling Application
 
 A real-time video communication platform built with **React.js**, **Vite**, **WebRTC**, and **ZegoCloud SDK**. Create instant meeting rooms, share invite links, and connect with crystal-clear HD video and audio — no account required.
@@ -156,3 +157,6 @@ vercel --prod
 ## 📝 License
 
 MIT © 2025 – Built as part of a real-time communications portfolio project.
+=======
+# Connectify-Seamless-Video-Calling-Application
+>>>>>>> 54d060e3ca62ff90d04c616f84a34b55836f57b5
