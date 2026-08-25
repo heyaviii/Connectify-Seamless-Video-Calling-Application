@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #080910;
+    color: #eef0f8;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(51, 171, 255, 0.3);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #111220;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1a8df5;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-display font-semibold text-white bg-brand-600 hover:bg-brand-500 active:scale-95 transition-all duration-200 shadow-lg shadow-brand-600/30 hover:shadow-brand-500/40;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-display font-semibold text-brand-400 border border-brand-800 hover:border-brand-600 hover:bg-brand-950 active:scale-95 transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-body text-surface-300 hover:text-white hover:bg-white/5 active:scale-95 transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-surface-900/80 border border-white/8 rounded-2xl backdrop-blur-sm;
+  }
+
+  .card-hover {
+    @apply card hover:border-brand-800/60 hover:bg-surface-900 transition-all duration-300 cursor-pointer;
+  }
+
+  .input-field {
+    @apply w-full bg-surface-800/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-surface-300 font-body focus:outline-none focus:border-brand-600/60 focus:ring-2 focus:ring-brand-600/20 transition-all duration-200;
+  }
+
+  .glass-panel {
+    @apply bg-white/4 backdrop-blur-xl border border-white/8 rounded-2xl;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-300 via-brand-400 to-brand-600 bg-clip-text text-transparent;
+  }
+
+  .noise-bg {
+    position: relative;
+  }
+
+  .noise-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    border-radius: inherit;
+  }
+}
+
+@layer utilities {
+  .border-white\/8 {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .bg-white\/4 {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+}
+
+/* Animated background orbs */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+  animation: float 8s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #1a8df5, transparent);
+  top: -200px;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #175db6, transparent);
+  bottom: -150px;
+  right: -100px;
+  animation-delay: -3s;
+}
+
+.orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #33abff, transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: -6s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  33% { transform: translateY(-20px) scale(1.02); }
+  66% { transform: translateY(10px) scale(0.98); }
+}
+
+/* Grid pattern overlay */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(26, 141, 245, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 141, 245, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ZegoCloud overrides */
+#zego-root {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(51, 171, 255, 0.1);
+  border-top-color: #33abff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Ping animation for status dots */
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Page transitions */
+.page-enter {
+  animation: pageEnter 0.4s ease-out forwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
